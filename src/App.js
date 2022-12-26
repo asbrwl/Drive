@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
 
+import BackgroundVideo from './Components/BackgroundVideo';
+import DashImage from './Components/Dash';
+import Modal from './Components/Modal';
+
 function App() {
+  
+const [isOpen, setIsOpen] = useState(false);
+
+const toggleModal = () => {
+  setIsOpen(!isOpen);
+};
+
+const closeModal = () => {
+  setIsOpen(false);
+};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+       <div>
+      <BackgroundVideo />
+      <DashImage />
+      <button onClick={toggleModal}>Open phone</button>
+      <Modal isOpen={isOpen} closeModal={closeModal} />
+      </div>
+    
   );
 }
 
